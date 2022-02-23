@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
+import {faKey} from '@fortawesome/free-solid-svg-icons'
+import {faAt} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,8 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  pwIcon = faKey;
+  emailIcon = faAt;
 
   constructor(
     private formBuilder: FormBuilder,

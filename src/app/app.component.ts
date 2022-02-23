@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from './player';
+import { Player } from './interfaces/player';
 import { PlayerService } from './player.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,7 @@ export class AppComponent implements OnInit{
   constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    this.getPlayers();
+
   }
 
   public getPlayers(): void {
@@ -29,18 +28,6 @@ export class AppComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-    );
-  }
-
-  public onAddPlayer(addForm: NgForm): void {
-    document.getElementById('add-player-form')?.click();
-    this.playerService.addPlayer(addForm.value).subscribe(
-      (response: Player) => {
-        this.getPlayers()
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      },
     );
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { AuthService } from './auth/services/auth.service';
 import { RandomGuard } from './auth/guards/random.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SettingsComponent } from './components/settings/settings.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +30,18 @@ import { RandomGuard } from './auth/guards/random.guard';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    SettingsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthGuard,

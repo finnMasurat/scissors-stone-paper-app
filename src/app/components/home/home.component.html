@@ -1,3 +1,28 @@
-<div>
-  Hallo!
+<h5 style="padding-left: 5px">Dashboard</h5>
+
+<div class="dashboard_container" style="display: flex; justify-content: center">
+  <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin: 5px; width: 250px; height: 250px">
+    <div class="card-body">
+      <h5 class="card-title">WINS</h5>
+      <p class="card-text" style="text-align: right">{{stats ? stats.winCount : 0}} games</p>
+    </div>
+  </div>
+  <div class="card text-white bg-danger mb-3" style="max-width: 18rem; margin: 5px; width: 250px; height: 250px">
+    <div class="card-body">
+      <h5 class="card-title">LOSSES</h5>
+      <p class="card-text" style="text-align: right">{{stats ? stats.lossCount : 0}} games</p>
+    </div>
+  </div>
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem; margin: 5px; width: 250px; height: 250px">
+    <div class="card-body">
+      <h5 class="card-title">DRAWS</h5>
+      <p class="card-text" style="text-align: right">{{stats ? stats.drawCount : 0}} games</p>
+    </div>
+  </div>
+  <div class="card text-white mb-3" style="max-width: 18rem;background-color: teal; margin: 5px; width: 250px; height: 250px">
+    <div class="card-body">
+      <h5 class="card-title">TOTAL</h5>
+      <p class="card-text">{{this.total}} games</p>
+    </div>
+  </div>
 </div>

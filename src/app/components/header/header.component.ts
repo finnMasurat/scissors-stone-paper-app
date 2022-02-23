@@ -1,8 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Player } from '../../player';
-import { HttpErrorResponse } from '@angular/common/http';
-import { PlayerService } from '../../player.service';
+import { Player } from '../../interfaces/player';
 
 @Component({
   selector: 'app-header',
@@ -12,21 +9,9 @@ import { PlayerService } from '../../player.service';
 export class HeaderComponent implements OnInit {
   @Output() reloadEvent = new EventEmitter();
 
-  constructor(private playerService: PlayerService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  public onAddPlayer(addForm: NgForm): void {
-    document.getElementById('add-player-form')?.click();
-    this.playerService.addPlayer(addForm.value).subscribe(
-      (response: Player) => {
-        this.reloadEvent.emit()
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      },
-    );
   }
 
   public onOpenModal(player: Player | null, mode: String): void {

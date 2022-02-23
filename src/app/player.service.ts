@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Player } from './player';
+import { Player } from './interfaces/player';
 import { environment } from '../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -18,8 +18,8 @@ export class PlayerService {
     return this.http.get<Player>(`${this.apiServerUrl}/player${playerId}`);
   }
 
-  public addPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(`${this.apiServerUrl}/player`, player);
+  public registerPlayer(player: Player): Observable<Player> {
+    return this.http.post<Player>(`${this.apiServerUrl}/player/register`, player);
   }
 
   public updatePlayer(player: Player): Observable<Player> {
@@ -28,6 +28,10 @@ export class PlayerService {
 
   public deletePlayer(playerId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/player/${playerId}`)
+  }
+
+  public getPlayerMetaData(): Observable<Player> {
+    return this.http.get<Player>(`${this.apiServerUrl}/player/userdata`);
   }
 
 }

@@ -1,0 +1,133 @@
+<div class="container">
+  <div style="display: flex; margin-bottom: 10px">
+    <h5 style="margin: auto">Choose your hand gesture</h5>
+  </div>
+
+  <div class="game_container">
+    <div class="card text-white mb-3 action-card" (click)="onGestureSelected('rock')">
+      <img class="action-card_title" src="../../../assets/rock.png" alt="">
+    </div>
+    <div class="card text-white mb-3 action-card" (click)="onGestureSelected('paper')">
+      <img class="action-card_title" src="../../../assets/paper.png" alt="">
+    </div>
+    <div class="card text-white mb-3 action-card" (click)="onGestureSelected('scissors')">
+      <img class="action-card_title" src="../../../assets/scissors.png" alt="">
+    </div>
+  </div>
+</div>
+
+
+<table class="scoreboard">
+  <tr>
+    <td>
+      <div class="player-card card text-white">
+        <img class="scoreboard-image" src="../../../assets/user.png" alt="Player">
+      </div>
+    </td>
+    <td *ngFor="let playerGameResult of playerResult">
+      <div class="scoreboard-card card text-white {{playerGameResult.win ? 'win' : ''}}">
+        <img :class="scoreboard-image " src="../../../assets/{{playerGameResult.gesture}}.png" alt="">
+      </div>
+    </td>
+
+<!--  </tr><td>-->
+<!--  <div class="scoreboard-card card text-white">-->
+<!--    <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--  </div>-->
+<!--</td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white win">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white win">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--    </div>-->
+<!--  </td>-->
+<!--  <td>-->
+<!--    <div class="scoreboard-card card text-white">-->
+<!--    </div>-->
+<!--  </td>-->
+  <tr>
+    <td>
+      <div class="player-card card text-white">
+        <img class="scoreboard-image" src="../../../assets/robo.png" alt="Robo">
+      </div>
+    </td>
+    <td *ngFor="let roboGameResult of roboResult">
+      <div class="scoreboard-card card text-white {{roboGameResult.win ? 'win' : ''}}">
+        <img class="scoreboard-image" src="../../../assets/{{roboGameResult.gesture}}.png" alt="">
+      </div>
+    </td>
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white win">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white win">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white win">-->
+<!--        <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white win">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white win">-->
+<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white">-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div class="scoreboard-card card text-white">-->
+<!--      </div>-->
+<!--    </td>-->
+
+  </tr>
+</table>
+

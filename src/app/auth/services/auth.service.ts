@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of, Observable } from 'rxjs';
+import { of, Observable, BehaviorSubject } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { Token } from '../models/token';
 
@@ -10,14 +10,15 @@ import { Token } from '../models/token';
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private loggedUser: string | null = null;
-
-  constructor(private http: HttpClient) {}
+  isAuthenticatedSub: BehaviorSubject<boolean>;
+  constructor(private http: HttpClient) {
+    this.isAuthenticatedSub = new BehaviorSubject<boolean>(this.isLoggedIn());
+  }
 
   login(user: { email: string, password: string }): Observable<boolean> {
     return this.http.post<any>('http://localhost:8080/authenticate', user)
       .pipe(
-        tap(token => this.doLoginUser(user.email, token)),
+        tap(token => this.doLoginUser(token)),
         mapTo(true),
         catchError(error => {
           alert(error.error);
@@ -26,14 +27,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post<any>('http://localhost:8080/authenticate', {
-    }).pipe(
-      tap(() => this.doLogoutUser()),
-      mapTo(true),
-      catchError(error => {
-        alert(error.error);
-        return of(false);
-      }));
+    this.doLogoutUser();
   }
 
   isLoggedIn() {
@@ -44,14 +38,14 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN) ?? '';
   }
 
-  private doLoginUser(username: string, tokens: Token) {
-    this.loggedUser = username;
+  private doLoginUser(tokens: Token) {
     this.storeToken(tokens);
+    this.isAuthenticatedSub.next(true);
   }
 
   private doLogoutUser() {
-    this.loggedUser = null;
     this.removeToken();
+    this.isAuthenticatedSub.next(false);
   }
 
   private storeJwtToken(jwt: string) {
@@ -61,7 +55,7 @@ export class AuthService {
   private storeToken(token: Token) {
     localStorage.setItem(this.JWT_TOKEN, token.jwt);
   }
-
+  // Using it as a fake logout
   private removeToken() {
     localStorage.removeItem(this.JWT_TOKEN);
   }

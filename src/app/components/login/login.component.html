@@ -1,11 +1,37 @@
 
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img src="https://www.pinclipart.com/picdir/big/329-3293970_thanks-again-i-tried-your-suggestion-of-increasing.png" class="brand_logo" alt="Logo">
+        </div>
+      </div>
+      <div class="d-flex justify-content-center form_container">
+        <form [formGroup]="form" (submit)="submit()" class="input_form">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <span class="input-group-text"><fa-icon [icon]="emailIcon"></fa-icon></span>
+            </div>
+            <input formControlName="email" type="email" class="form-control input_user" placeholder="Email" required>
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-append">
+              <span class="input-group-text"><fa-icon [icon]="pwIcon"></fa-icon></span>
+            </div>
+            <input formControlName="password" type="password" class="form-control input_pass" placeholder="Password" required>
+          </div>
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" name="button" class="btn login_btn">Login</button>
+          </div>
+        </form>
+      </div>
 
-<form [formGroup]="form" (submit)="submit()">
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-  <input formControlName="email" type="email" class="form-control" placeholder="Email" required>
-
-  <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
-
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-</form>
+      <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+          <p class="sign-up-text">Don't have an account? </p><a class="sign-up-link" routerLink="/register" class="ml-2">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

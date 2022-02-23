@@ -9,11 +9,11 @@ import {faUser} from '@fortawesome/free-solid-svg-icons'
 import {faImage} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class SettingsComponent implements OnInit {
   form!: FormGroup;
   userIcon = faUser;
   pwIcon = faKey;
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
-    this.playerService.registerPlayer(this.form?.getRawValue())
+    this.playerService.updatePlayer(this.form?.getRawValue())
       .subscribe(() => this.router.navigate(['/login']));
   }
 }

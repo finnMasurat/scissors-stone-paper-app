@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,17 +7,18 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  authenticated = false;
+  isAuthenticated: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private authService: AuthService) {
+    authService.isAuthenticatedSub.subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);
+
   }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    this.http.post('http://localhost:8080/logout', {}, {withCredentials: true})
-      .subscribe(() => this.authenticated = false);
+    this.authService.logout();
   }
 
 }

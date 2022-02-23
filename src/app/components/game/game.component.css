@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%
+}
+
+.game_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15%;
+}
+
+.action-card {
+  border-radius:1em;
+  max-width: 15rem;
+  margin: 5px;
+  width: 150px;
+  height: 150px;
+  background-color: darkorange;
+  border: 5px solid teal;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+.action-card:hover {
+  cursor: pointer;
+  background-color: teal;
+  border: 5px solid darkorange;
+}
+.action-card:active {
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+.action-card_title {
+  padding-top: 10px;
+  max-height: 100px;
+  max-width: 80px;
+  margin:auto
+}
+
+.player-card {
+  border-radius:1em;
+  max-width: 15rem;
+  width: 100px;
+  height: 100px;
+  border: 5px solid darkorange;
+}
+
+.scoreboard-image {
+  padding-top: 10px;
+  max-height: 80px;
+  max-width: 50px;
+  margin:auto
+}
+
+.scoreboard-card {
+  border-radius:1em;
+  max-width: 15rem;
+  width: 100px;
+  height: 100px;
+  border: 5px solid teal
+}
+.win {
+  background-color: darkorange;
+}
