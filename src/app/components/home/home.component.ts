@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Statistic } from '../../interfaces/stats';
 import { StatsService } from '../../stats.service';
+import { PlayerService } from '../../player.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   stats: Statistic | null = null;
   total: number = 0;
 
-  constructor(private statsService: StatsService) {}
+  constructor(private statsService: StatsService, private playerService: PlayerService) {}
 
   ngOnInit(): void {
     this.statsService.getPlayerStats().subscribe(

@@ -6,7 +6,6 @@ import { PlayerService } from '../../player.service';
 import {faKey} from '@fortawesome/free-solid-svg-icons'
 import {faAt} from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-solid-svg-icons'
-import {faImage} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-register',
@@ -18,7 +17,6 @@ export class RegisterComponent implements OnInit {
   userIcon = faUser;
   pwIcon = faKey;
   emailIcon = faAt;
-  imageIcon = faImage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +31,6 @@ export class RegisterComponent implements OnInit {
       name: '',
       email: '',
       password: '',
-      imageUrl: ''
     });
   }
 

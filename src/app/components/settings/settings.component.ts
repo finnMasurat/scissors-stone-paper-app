@@ -6,7 +6,7 @@ import { PlayerService } from '../../player.service';
 import {faKey} from '@fortawesome/free-solid-svg-icons'
 import {faAt} from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-solid-svg-icons'
-import {faImage} from '@fortawesome/free-solid-svg-icons'
+import { Player } from '../../interfaces/player';
 
 @Component({
   selector: 'app-settings',
@@ -18,27 +18,26 @@ export class SettingsComponent implements OnInit {
   userIcon = faUser;
   pwIcon = faKey;
   emailIcon = faAt;
-  imageIcon = faImage;
+  player: Player | undefined;
 
   constructor(
-    private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private playerService: PlayerService
+    private playerService: PlayerService,
   ) {
+    playerService.getPlayerMetaData().subscribe((response) => this.player = response)
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      name: '',
-      email: '',
-      password: '',
-      imageUrl: ''
-    });
   }
 
-  submit(): void {
-    this.playerService.updatePlayer(this.form?.getRawValue())
-      .subscribe(() => this.router.navigate(['/login']));
+  public submit(player: Player): void {
+    this.playerService.updatePlayer(player).subscribe(
+      (response: Player) => {
+        console.log(response);
+        this.player = player;
+      },
+    );
   }
+
 }

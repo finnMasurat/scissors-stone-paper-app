@@ -60,3 +60,43 @@
 .win {
   background-color: darkorange;
 }
+
+.result-modal {
+  color: white;
+  background-color: teal;
+  border: 5px solid darkorange;
+  border-radius: 1em;
+}
+.modal-header {
+  border: none;
+}
+.modal-title {
+  padding-left: 90px;
+  margin: auto;
+  border: none;
+}
+
+.modal-header > button {
+  color: white;
+}
+.modal-footer {
+  border: none;
+}
+
+.modal-image {
+  max-width: 400px;
+  margin: auto;
+  padding-left: 45px;
+  padding-bottom: 10px;
+}
+
+.modal-button {
+  border: 1px solid;
+}
+
+.dashboard-button {
+  background-color: darkgray;
+}
+.next-button {
+  background-color: darkorange;
+}

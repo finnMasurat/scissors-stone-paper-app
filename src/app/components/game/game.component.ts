@@ -26,6 +26,7 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.resetGame();
   }
 
   roboGesture(): string {
@@ -45,8 +46,18 @@ export class GameComponent implements OnInit {
 
     if (this.playerResult.length >= 9) {
       this.gameFinished = true;
-      if (this.playerWins > this.roboWins) this.statsService.
-
+      if (this.playerWins > this.roboWins) {
+        this.statsService.postPlayerResult('win')
+          .subscribe((response) => this.openModal('win'))
+      }
+      if (this.playerWins < this.roboWins) {
+        this.statsService.postPlayerResult('loss')
+          .subscribe((response) => this.openModal('loss'))
+      }
+      if (this.playerWins === this.roboWins) {
+        this.statsService.postPlayerResult('draw')
+          .subscribe((response) => this.openModal('draw'))
+      }
     }
   }
 
@@ -76,9 +87,32 @@ export class GameComponent implements OnInit {
         if (roboGesture === 'rock') roboWin = true;
         break;
     }
-    this.calcResult(playerWin, roboWin);
     this.playerResult.push(this.createResult(playerGesture, playerWin));
     this.roboResult.push(this.createResult(roboGesture, roboWin));
+    this.calcResult(playerWin, roboWin);
+  }
+
+  public openModal(result: String): void {
+    const container = document.getElementById('container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    switch (result) {
+      case 'win':
+        console.log('win')
+        button.setAttribute('data-target', '#winModal');
+        break;
+      case 'loss':
+        console.log('loss')
+        button.setAttribute('data-target', '#lossModal');
+        break;
+      case 'draw':
+        console.log('draw')
+        button.setAttribute('data-target', '#drawModal');
+    }
+    container?.appendChild(button);
+    button.click();
   }
 
 

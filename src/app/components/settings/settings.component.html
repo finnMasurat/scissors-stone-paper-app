@@ -8,33 +8,22 @@
         </div>
       </div>
       <div class="d-flex justify-content-center form_container">
-        <form [formGroup]="form" (submit)="submit()" class="input_form">
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text"><fa-icon [icon]="userIcon"></fa-icon></span>
-            </div>
-            <input formControlName="name" type="text" class="form-control input_user" placeholder="Name" required>
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{player?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text"><fa-icon [icon]="emailIcon"></fa-icon></span>
-            </div>
-            <input formControlName="email" type="email" class="form-control input_user" placeholder="Email" required>
+          <input type="hidden" ngModel="{{player?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" ngModel="{{player?.email}}" name="email" class="form-control" id="email" placeholder="Email">
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text"><fa-icon [icon]="pwIcon"></fa-icon></span>
-            </div>
-            <input formControlName="password" type="password" class="form-control input_pass" placeholder="Password" required>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" ngModel="{{player?.password}}" name="password" class="form-control" id="password" placeholder="Password">
           </div>
-          <div class="input-group mb-2">
-            <div class="input-group-append">
-              <span class="input-group-text"><fa-icon [icon]="imageIcon"></fa-icon></span>
-            </div>
-            <input formControlName="imageUrl" type="text" class="form-control input_pass" placeholder="ImageUrl" required>
-          </div>
-          <div class="d-flex justify-content-center mt-3 login_container">
-            <button type="submit" name="button" class="btn login_btn">Sign Up</button>
+          <div class="modal-footer">
+            <button (click)="submit(editForm.value)" data-dismiss="modal" class="btn update-btn" >Save changes</button>
           </div>
         </form>
       </div>

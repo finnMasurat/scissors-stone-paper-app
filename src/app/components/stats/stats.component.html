@@ -1,1 +1,23 @@
-<p>stats works!</p>
+<div class="container">
+  <h5 class="title center" style="align-self: center"> Top 10 List</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Wins</th>
+      <th scope="col">Losses</th>
+      <th scope="col">Draws</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let score of highScores;index as indexOfElement">
+      <th scope="row">{{indexOfElement + 1}}</th>
+      <td>{{score?.name}}</td>
+      <td>{{score?.winCount}}</td>
+      <td>{{score?.lossCount}}</td>
+      <td>{{score?.drawCount}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

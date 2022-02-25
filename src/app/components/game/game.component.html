@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="container">
   <div style="display: flex; margin-bottom: 10px">
     <h5 style="margin: auto">Choose your hand gesture</h5>
   </div>
@@ -26,53 +26,9 @@
     </td>
     <td *ngFor="let playerGameResult of playerResult">
       <div class="scoreboard-card card text-white {{playerGameResult.win ? 'win' : ''}}">
-        <img :class="scoreboard-image " src="../../../assets/{{playerGameResult.gesture}}.png" alt="">
+        <img class="scoreboard-image " src="../../../assets/{{playerGameResult.gesture}}.png" alt="">
       </div>
     </td>
-
-<!--  </tr><td>-->
-<!--  <div class="scoreboard-card card text-white">-->
-<!--    <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--  </div>-->
-<!--</td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white win">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white win">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--      <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--    </div>-->
-<!--  </td>-->
-<!--  <td>-->
-<!--    <div class="scoreboard-card card text-white">-->
-<!--    </div>-->
-<!--  </td>-->
   <tr>
     <td>
       <div class="player-card card text-white">
@@ -84,50 +40,65 @@
         <img class="scoreboard-image" src="../../../assets/{{roboGameResult.gesture}}.png" alt="">
       </div>
     </td>
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white win">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white win">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white win">-->
-<!--        <img class="scoreboard-image" src="../../../assets/scissors.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white win">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white win">-->
-<!--        <img class="scoreboard-image" src="../../../assets/paper.png" alt="">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white">-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <div class="scoreboard-card card text-white">-->
-<!--      </div>-->
-<!--    </td>-->
-
   </tr>
 </table>
 
+<div class="modal fade" id="winModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="winModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content result-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" >Congratulation!!!</h5>
+        <button type="button" (click)="resetGame()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="modal-image" src="../../../assets/win.png" alt="">
+      </div>
+      <div class="modal-footer">
+        <a type="button" [routerLink]="['/']" class="dashboard-button btn btn-secondary btn-sm modal-button" data-dismiss="modal">to dashboad</a>
+        <a type="button" (click)="resetGame()" class="next-button btn btn-primary btn-sm modal-button" data-dismiss="modal">next game</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lossModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lossModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content result-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" >Next time ;)</h5>
+        <button type="button" (click)="resetGame()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="modal-image" src="../../../assets/loss.png" alt="">
+      </div>
+      <div class="modal-footer">
+        <a [routerLink]="['/']" type="button" class="dashboard-button btn btn-secondary btn-sm modal-button" data-dismiss="modal">to dashboad</a>
+        <a type="button" (click)="resetGame()" data-dismiss="modal" class="next-button btn btn-primary btn-sm modal-button">next game</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="drawModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lossModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content result-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" >Well balanced!</h5>
+        <button type="button" (click)="resetGame()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="modal-image" src="../../../assets/draw.png" alt="">
+      </div>
+      <div class="modal-footer">
+        <a [routerLink]="['/']" type="button" class="dashboard-button btn btn-secondary btn-sm modal-button" data-dismiss="modal">to dashboad</a>
+        <a type="button" (click)="resetGame()" data-dismiss="modal" class="next-button btn btn-primary btn-sm modal-button">next game</a>
+      </div>
+    </div>
+  </div>
+</div>

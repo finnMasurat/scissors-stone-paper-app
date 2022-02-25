@@ -6,7 +6,6 @@ import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -24,7 +23,6 @@ import { GameComponent } from './components/game/game.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     StatsComponent,
     LoginComponent,

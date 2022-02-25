@@ -1,0 +1,21 @@
+.dashboard-title {
+  padding-left: 5px;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.dashboard-card {
+  max-width: 18rem;
+  background-color: teal;
+  margin: 5px;
+  width: 250px;
+  height: 200px;
+}
+
+.card-text {
+  text-align: right;
+}
